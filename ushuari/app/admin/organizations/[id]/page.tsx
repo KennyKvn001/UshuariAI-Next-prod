@@ -8,11 +8,18 @@ import { toast } from "react-hot-toast";
 import { Organization } from "@/types";
 import axios from "axios";
 
-export default function OrganizationDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+
+type PageParams = {
+  params: {
+    id: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
+};
+
+
+
+export default function OrganizationDetailPage(
+  { params }: PageParams) {
   const [organization, setOrganization] = useState<Organization | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [notes, setNotes] = useState("");
